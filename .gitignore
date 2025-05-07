@@ -1,0 +1,29 @@
+# Node dependencies
+/node_modules
+
+# Build output
+/dist
+
+# Prisma generated client
+/prisma/dev.db
+/prisma/dev.db-journal
+/prisma/migrations
+
+# Environment variables
+.env
+
+# Docker
+*.pid
+*.log
+docker-compose.override.yml
+
+# OS / Editor
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# TypeScript cache
+*.tsbuildinfo
