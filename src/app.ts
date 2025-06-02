@@ -3,7 +3,7 @@ import routes from './routes'
 import { swaggerUI } from '@hono/swagger-ui';
 import { OpenAPIHono } from '@hono/zod-openapi';
 
-const app = new OpenAPIHono();
+export const app = new OpenAPIHono();
 app.route('/', routes)
 
 app.doc('/openapi.json', {
@@ -17,12 +17,13 @@ app.get('/docs', swaggerUI({ url: '/openapi.json' }));
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
+if (require.main === module) {
+  const port = parseInt(process.env.PORT || '3000')
+  console.log(`🚀 Server running http://localhost:${port}`)
 
-const port = parseInt(process.env.PORT || '3000')
-console.log(`🚀 Server running http://localhost:${port}`)
-
-serve({
-  fetch: app.fetch,
-  port,
-  hostname: '0.0.0.0'
-})
+  serve({
+    fetch: app.fetch,
+    port,
+    hostname: '0.0.0.0'
+  })
+}
